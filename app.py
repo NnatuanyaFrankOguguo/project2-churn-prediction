@@ -541,7 +541,9 @@ def render_performance_tab(models_data: dict, train_df: pd.DataFrame, test_df: p
         key='cm_model'
     )
     
-    model_key = model_choice.lower().replace(' ', '_')
+    # Map display names to model keys
+    key_map = {'XGBoost': 'xgboost', 'Random Forest': 'random_forest', 'Logistic Regression': 'logistic'}
+    model_key = key_map[model_choice]
     model = models_data[model_key]
     
     if model_key == 'logistic':
@@ -586,7 +588,9 @@ def render_performance_tab(models_data: dict, train_df: pd.DataFrame, test_df: p
         key='imp_model'
     )
     
-    imp_model_key = importance_model.lower().replace(' ', '_')
+    # Map display names to model keys
+    key_map = {'XGBoost': 'xgboost', 'Random Forest': 'random_forest', 'Logistic Regression': 'logistic'}
+    imp_model_key = key_map[importance_model]
     
     if imp_model_key == 'logistic':
         # Coefficient-based importance
